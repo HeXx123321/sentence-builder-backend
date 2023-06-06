@@ -2,20 +2,27 @@ const dotenv = require('dotenv');
 
 dotenv.config({path: '.env'});
 
+if (process.env.NODE_ENV !== "production") {
+    dotenv.config({
+        path: "src/config.env",
+    });
+}
+
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
-const PORT = process.env.PORT;
-const DATABASE_URL = process.env.DATABASE_URL;
+const PORT = process.env.PORT || 3010;
+
+const DATABASE_URI = process.env.DATABASE_URL;
 
 // Debug Nonsense, CORS incoming!
 console.log('this is fun')
 console.log(PORT);
-console.log(DATABASE_URL);
+console.log(DATABASE_URI);
 
 // Start DB Stuff
-mongoose.connect(DATABASE_URL, { useNewUrlParser: true})
+mongoose.connect(DATABASE_URI, { useNewUrlParser: true})
 
 const db = mongoose.connection
 
@@ -25,13 +32,22 @@ db.on('open', () => console.log('Connected to Database'))
 // END DB Stuff
 
 // Middleware Setup
-app.use(express.json())
+app.use(
+    cors({
+        origin: "*",
+        methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+
+}))
+
+app.use(morgan("combined"));
+
+app.use(express.json(({limit: "100mb"})))
 
 // Routes
-const sentenceRouter = require('./routes/sentences')
-const wordsRouter = require('./routes/words')
+const sentenceRouter = require('./src/routes/sentences')
+const wordsRouter = require('./src/routes/words')
 
-app.use('/words', wordsRouter)
+app.use('./words', wordsRouter)
 app.use('./sentences', sentenceRouter)
 
 // Server INIT
