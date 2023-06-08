@@ -30,6 +30,7 @@ export const runApp = () => {
 };
 
 export const closeApp = (app) => {
+    // TODO: Must add error middleware to this
     app.use(console.error("Server Shutdown"));
 
     app.use("*", (req, res) => {

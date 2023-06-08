@@ -1,32 +1,52 @@
 const express = require('express')
 const router = express.Router()
+const Sentence = require('../models/sentence')
+// Simplicity is better here
 
-// Get 1
-router.get('api/v1/sentences/:id', (req, res) => {
-    res.send(req.params.id);
-
-})
 // Get all
+router.get('/', async (req, res) => {
+    console.log(req.query.limit)
+    try {
+      const sentences = await Sentence.find()
+      res.json(sentences)
 
-router.get('api/v1/sentences/', (req, res) => {
-    res.send('Get all');
+    } catch (err) {
+      res.status(500).json({ message: err.message })
+    }
+
 })
-// Create 1
-
-router.post('api/v1/sentences/', (req, res) => {
-    res.send('Create 1');
-
-})
-// Update 1
-router.patch('api/v1/sentences/:id', (req, res) => {
-    res.send(req.params.id);
+// Getting one
+router.get('/:id', (req, res) => {
+    res.send(req.params.id)
 })
 
-// Delete
+// Creating one
+router.post('/', async (req, res) => {
+    const sentence = new Sentence({
+        sentenceBody: req.body.SentenceBody
+    })
 
-router.delete('api/v1/sentences/', (req, res) => {
-    res.send(req.params.id);
+    try {
+        const newSentence = await sentence.save()
+        res.status(201).json(newSentence)
+
+    } catch (err) {
+        res.status(400).json({
+            message: err.message
+        })
+
+    }
+
 })
-// Refactor to sentences actually lol
+// Updating one
+
+router.patch('/:id', (req, res) => {
+
+})
+// Deleting one
+router.delete('/:id', (req, res) => {
+
+})
+
 
 module.exports = router

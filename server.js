@@ -1,10 +1,13 @@
+const cors = require('cors')
+const morgan = require('morgan')
+
 const dotenv = require('dotenv');
 
 dotenv.config({path: '.env'});
 
 if (process.env.NODE_ENV !== "production") {
     dotenv.config({
-        path: "src/config.env",
+        path: ".env",
     });
 }
 
@@ -14,7 +17,7 @@ const mongoose = require('mongoose')
 
 const PORT = process.env.PORT || 3010;
 
-const DATABASE_URI = process.env.DATABASE_URL;
+const DATABASE_URI = process.env.DATABASE_URI;
 
 // Debug Nonsense, CORS incoming!
 console.log('this is fun')
@@ -27,7 +30,7 @@ mongoose.connect(DATABASE_URI, { useNewUrlParser: true})
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
-db.on('open', () => console.log('Connected to Database'))
+db.once('open', () => console.log('Connected to Database'))
 
 // END DB Stuff
 
@@ -47,8 +50,8 @@ app.use(express.json(({limit: "100mb"})))
 const sentenceRouter = require('./src/routes/sentences')
 const wordsRouter = require('./src/routes/words')
 
-app.use('./words', wordsRouter)
-app.use('./sentences', sentenceRouter)
+app.use('/words', wordsRouter)
+app.use('/sentences', sentenceRouter)
 
 // Server INIT
 app.listen(PORT, () => console.log('The server has began...'))

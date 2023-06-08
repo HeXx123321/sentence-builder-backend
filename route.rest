@@ -1,0 +1,14 @@
+GET http://localhost:3010/sentences?limit=5
+
+###
+
+GET http://localhost:3010/sentences/
+
+###
+
+POST http://localhost:3010/sentences
+Content-Type: application/json
+
+{
+    "SentenceBody": "Well here we go!"
+}
