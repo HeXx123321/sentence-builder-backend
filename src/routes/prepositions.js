@@ -1,15 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const Adverb = require('../models/adverb')
+const Preposition = require('../models/prepositions')
 
 
 router.get('/', async (req, res) => {
     // console.log(req.query.limit)
-    // TODO add query limits
-
+    // TODO Add Query limiting
     try {
-      const adverbs = await Adverb.find()
-      res.json(adverbs)
+      const prepositions = await Preposition.find()
+      res.json(prepositions)
 
     } catch (err) {
       res.status(500).json({ message: err.message })

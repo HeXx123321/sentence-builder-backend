@@ -1,15 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const Adverb = require('../models/adverb')
-
+const Exclamation = require('../models/exclamations')
 
 router.get('/', async (req, res) => {
     // console.log(req.query.limit)
-    // TODO add query limits
-
+    // TODO Query limit & pagination
     try {
-      const adverbs = await Adverb.find()
-      res.json(adverbs)
+      const exclamations = await Exclamation.find()
+      res.json(exclamations)
 
     } catch (err) {
       res.status(500).json({ message: err.message })

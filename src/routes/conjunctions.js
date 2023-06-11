@@ -1,15 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const Adverb = require('../models/adverb')
+const Conjunction = require('../models/conjunctions')
 
 
 router.get('/', async (req, res) => {
-    // console.log(req.query.limit)
-    // TODO add query limits
-
+    console.log(req.query.limit)
     try {
-      const adverbs = await Adverb.find()
-      res.json(adverbs)
+      const conjunctions = await Conjunction.find()
+      res.json(conjunctions)
 
     } catch (err) {
       res.status(500).json({ message: err.message })
