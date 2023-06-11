@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const wordSchema = new mongoose.Schema({
+const pronounSchema = new mongoose.Schema({
 
     Word: {
         type: String,
@@ -19,14 +19,13 @@ const wordSchema = new mongoose.Schema({
 
 })
 
-wordSchema.pre("save", async function (next) {
-    if (!this.isModified("wordBody")) {
+pronounSchema.pre("save", async function (next) {
+    if (!this.isModified("Body")) {
         this.updatedAt = Date.now;
         next;
     }
 
     this.updatedAt = Date.now();
-    // this.sentenceNumber = 1;
 });
 
-module.exports = mongoose.model("Word", wordSchema);
+module.exports = mongoose.model("Pronoun", pronounSchema);

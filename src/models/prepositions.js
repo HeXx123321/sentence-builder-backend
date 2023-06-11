@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const wordSchema = new mongoose.Schema({
+const prepositionSchema = new mongoose.Schema({
 
     Word: {
         type: String,
@@ -19,8 +19,8 @@ const wordSchema = new mongoose.Schema({
 
 })
 
-wordSchema.pre("save", async function (next) {
-    if (!this.isModified("wordBody")) {
+prepositionSchema.pre("save", async function (next) {
+    if (!this.isModified("Body")) {
         this.updatedAt = Date.now;
         next;
     }
@@ -29,4 +29,4 @@ wordSchema.pre("save", async function (next) {
     // this.sentenceNumber = 1;
 });
 
-module.exports = mongoose.model("Word", wordSchema);
+module.exports = mongoose.model("Preposition", prepositionSchema);
