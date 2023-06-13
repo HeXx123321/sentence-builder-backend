@@ -28,4 +28,4 @@ adverbSchema.pre("save", async function (next) {
     this.updatedAt = Date.now();
 });
 
-module.exports = mongoose.model("Adverb", wordSchema);
+module.exports = mongoose.model("Adverb", adverbSchema);

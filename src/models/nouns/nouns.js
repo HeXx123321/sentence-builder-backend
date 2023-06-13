@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const nounSchema = new mongoose.Schema({
  
    Word: {

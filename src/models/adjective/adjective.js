@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const adjectiveSchema = new mongoose.Schema({
  
    Word: {
