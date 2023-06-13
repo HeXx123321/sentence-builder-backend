@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Sentence = require('../models/sentence')
+const Sentence = require('../models/sentences/sentence')
 // Simplicity is better here
 
 // Get all
