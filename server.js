@@ -1,6 +1,10 @@
+// import { runApp, closeApp } from "./app.js"
 const cors = require('cors')
 const morgan = require('morgan')
 const express = require('express')
+
+//const app = runApp();
+
 const app = express()
 const mongoose = require('mongoose')
 
@@ -86,6 +90,7 @@ app.use('/ecxclamations', exclamationRouter)
 app.use('/nouns', nounsRouter)
 app.use('/prepositions', prepositionRouter)
 app.use('/verbs', verbRouter)
+app.use('/adjectives', adjectiveRouter)
 
 /////////////////////////////////////////////////////////////////
 ////////////////// Router Setup END /////////////////////////////
