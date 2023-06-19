@@ -12,3 +12,44 @@ Content-Type: application/json
 {
     "SentenceBody": "Well here we go!"
 }
+
+###
+
+GET http://localhost:3010/nouns
+
+###
+
+GET http://localhost:3010/adverbs
+
+###
+
+GET http://localhost:3010/adjectives
+
+###
+
+GET http://localhost:3010/conjunctions
+
+###
+
+GET http://localhost:3010/determiners
+
+###
+
+GET http://localhost:3010/exclamations
+
+###
+
+GET http://localhost:3010/prepositions
+
+###
+
+GET http://localhost:3010/pronouns
+
+###
+
+GET http://localhost:3010/adverbs
+
+###
+
+GET http://localhost:3010/partial_sentences
+
