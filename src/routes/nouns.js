@@ -4,9 +4,9 @@ const Noun = require('../models/nouns/nouns')
 const nounModel = require( "../models/nouns/nouns")
 
 router.get('/', async (req, res) => {
-    // console.log(req.query.limit)
+
     let currentPage = parseInt(req.query.page) || 1;
-    let limit = parseInt(req.query.limit) || 10;
+    let limit = parseInt(req.query.limit) || 20;
     
     const totalNouns = await nounModel.find().countDocuments();
 

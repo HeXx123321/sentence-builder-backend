@@ -74,6 +74,7 @@ const conjunctionRouter = require('./src/routes/conjunctions')
 const determinerRouter = require('./src/routes/determiners')
 const exclamationRouter = require('./src/routes/exclamations')
 const nounsRouter = require('./src/routes/nouns')
+const pronounsRouter = require('./src/routes/pronouns')
 const prepositionRouter = require('./src/routes/prepositions')
 const verbRouter = require('./src/routes/verbs')
 
@@ -86,11 +87,12 @@ app.use('/sentences', sentenceRouter)
 app.use('/adverbs', adverbRouter)
 app.use('/conjunctions', conjunctionRouter)
 app.use('/determiners', determinerRouter)
-app.use('/ecxclamations', exclamationRouter)
+app.use('/exclamations', exclamationRouter)
 app.use('/nouns', nounsRouter)
 app.use('/prepositions', prepositionRouter)
 app.use('/verbs', verbRouter)
 app.use('/adjectives', adjectiveRouter)
+app.use('/pronouns', pronounsRouter)
 
 /////////////////////////////////////////////////////////////////
 ////////////////// Router Setup END /////////////////////////////

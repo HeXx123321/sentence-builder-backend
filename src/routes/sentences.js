@@ -5,7 +5,7 @@ const Sentence = require('../models/sentences/sentence')
 
 // Get all
 router.get('/', async (req, res) => {
-    console.log(req.query.limit)
+
     try {
       const sentences = await Sentence.find()
       res.json(sentences)
@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
     }
 
 })
+
 // Getting one
 router.get('/:id', (req, res) => {
     res.send(req.params.id)
@@ -38,8 +39,8 @@ router.post('/', async (req, res) => {
     }
 
 })
-// Updating one
 
+// Updating one
 router.patch('/:id', (req, res) => {
 
 })

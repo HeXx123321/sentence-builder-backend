@@ -7,9 +7,9 @@ router.get('/', async (req, res) => {
     let currentPage = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
     
-    const totalNouns = await adjectiveModel.find().countDocuments();
+    const totalAdjectives = await adjectiveModel.find().countDocuments();
 
-    let totalPages = Math.ceil(totalNouns / limit);
+    let totalPages = Math.ceil(totalAdjectives / limit);
 
     if (totalPages <= 0) {
       totalPages = 1;
@@ -58,8 +58,9 @@ router.get('/', async (req, res) => {
 
 
     try {
-      const nouns = await adjectiveModel.find().skip(skip)
-                                     .limit(limit);
+      const adjectives = await adjectiveModel.find()
+                                             .skip(skip)
+                                             .limit(limit);
       res.status(200).json({
         success: true,
         currentPage,
@@ -69,7 +70,7 @@ router.get('/', async (req, res) => {
         prevPage,
         hasNextPage,
         nextPage,
-        nouns});
+        adjectives});
 
     } catch (err) {
       res.status(500).json({ message: err.message })
