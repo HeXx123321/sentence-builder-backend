@@ -3,38 +3,48 @@
 # Key Features
  - Retrieve sentences
  - Store sentences
+ - Store words
  - Retrieve partial sentences
  - Retrieve words/building blocks
 
 # To DO
  - ~~Fetch methods for building words~~
- - Fetch for partial sentences
- - Auth System?(!)
+ - ~~Fetch for partial sentences~~
  - ~~Query Limits~~
  - Optimizations(!)
- - Unit tests
-
-# Key assumptions
- - Words are "immutable" in the database, essentially read-only
- - Only sentences and partial_sentences are "mutable"
- - Small scale demo so no fancy auth system
- - Code liniency in terms of spaghettification ("Nervous laughter")
- - Focus on a demo ready product
-
+ - MongoDB AutoImport for Datatable!
+ - Auth System
 # Technology Used
- - Check the package.json
- - Mongoose for ORM
- - Mongo as db
- - DotEnv for sensitive keys?
- - CORS Headers, just in case
- - Express (!)
- - Validator (Don't think this is used)
+ - MongoDB
+ - Express
+ - NodeJS
 
+# API Routes
+
+####### Words #######
+  - GET Adjectives
+  - GET Adverbs
+  - GET Conjunctions
+  - GET Determiners
+  - GET Exclamations
+  - GET Nouns
+  - GET Prepositions
+  - GET Pronouns
+  - GET Verbs
+
+####### Sentences #######
+  - GET Partial_Sentences
+  - GET Completed_Sentences
+  - POST Partial_Sentences
+  - POST Completed_Sentences
 # Getting Started
 Before you begin ensure you have the following installed:
  - Git
- - Nodejs 18 or higher
+ - Nodejs 16 or higher
  - npm
+ - MongoDB Installation + MongoDBCompass
+   - On windows machine mongodb server may need to be started manually: Task Manager -> Services -> Mongodb -> Start
+
 
  In a new terminal type the following commands, hitting enter/return after each step:
  1. `git clone https://github.com/HeXx123321/sentence-builder-backend`
