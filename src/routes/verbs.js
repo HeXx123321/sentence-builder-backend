@@ -7,9 +7,9 @@ router.get('/', async (req, res) => {
     let currentPage = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
     
-    const totalNouns = await verbModel.find().countDocuments();
+    const totalVerbs = await verbModel.find().countDocuments();
 
-    let totalPages = Math.ceil(totalNouns / limit);
+    let totalPages = Math.ceil(totalVerbs / limit);
 
     if (totalPages <= 0) {
       totalPages = 1;
@@ -58,7 +58,7 @@ router.get('/', async (req, res) => {
 
 
     try {
-      const nouns = await verbModel.find().skip(skip)
+      const verbs = await verbModel.find().skip(skip)
                                      .limit(limit);
       res.status(200).json({
         success: true,
@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
         prevPage,
         hasNextPage,
         nextPage,
-        nouns});
+        verbs});
 
     } catch (err) {
       res.status(500).json({ message: err.message })

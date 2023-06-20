@@ -58,7 +58,7 @@ router.get('/', async (req, res) => {
 
 
     try {
-      const nouns = await prepositionModel.find().skip(skip)
+      const prepositions = await prepositionModel.find().skip(skip)
                                      .limit(limit);
       res.status(200).json({
         success: true,
@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
         prevPage,
         hasNextPage,
         nextPage,
-        nouns});
+        prepositions});
 
     } catch (err) {
       res.status(500).json({ message: err.message })

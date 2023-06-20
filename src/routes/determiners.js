@@ -7,9 +7,9 @@ router.get('/', async (req, res) => {
     let currentPage = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
     
-    const totalNouns = await determinerModel.find().countDocuments();
+    const totalDeterminers = await determinerModel.find().countDocuments();
 
-    let totalPages = Math.ceil(totalNouns / limit);
+    let totalPages = Math.ceil(totalDeterminers / limit);
 
     if (totalPages <= 0) {
       totalPages = 1;
@@ -58,7 +58,7 @@ router.get('/', async (req, res) => {
 
 
     try {
-      const nouns = await determinerModel.find().skip(skip)
+      const determiners = await determinerModel.find().skip(skip)
                                      .limit(limit);
       res.status(200).json({
         success: true,
@@ -69,7 +69,7 @@ router.get('/', async (req, res) => {
         prevPage,
         hasNextPage,
         nextPage,
-        nouns});
+        determiners});
 
     } catch (err) {
       res.status(500).json({ message: err.message })
