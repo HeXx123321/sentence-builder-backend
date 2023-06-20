@@ -86,7 +86,7 @@ router.get('/:id', (req, res) => {
 
 // Creating one
 router.post('/', async (req, res) => {
-    const sentence = new Sentence({
+    const sentence = new sentenceModel({
         sentenceBody: req.body.SentenceBody
     })
 
