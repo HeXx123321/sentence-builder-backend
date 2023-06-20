@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const Sentence = require('../models/sentences/sentence')
 const partialSentence = require('../models/partialsentence')
 // Simplicity is better here
 
@@ -21,7 +20,21 @@ router.get('/:id', (req, res) => {
 })
 
 // Creating one
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  const partialsentence = new partialSentence({
+      partialsentenceBody: req.body.PartialSentenceBody
+  })
+
+  try {
+      const newPartialSentence = await partialSentence.save()
+      res.status(201).json(newPartialSentence)
+
+  } catch (err) {
+      res.status(400).json({
+          message: err.message
+      })
+
+  }
 
 })
 // Updating one
